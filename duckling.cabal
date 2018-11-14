@@ -1,10 +1,10 @@
 name:                duckling
-version:             0.1.4.0
+version:             0.1.6.1
 synopsis:            A Haskell library for parsing text into structured data.
 description:
   Duckling is a library for parsing text into structured data.
-homepage:            https://github.com/facebookincubator/duckling#readme
-bug-reports:         https://github.com/facebookincubator/duckling/issues
+homepage:            https://github.com/facebook/duckling#readme
+bug-reports:         https://github.com/facebook/duckling/issues
 license:             OtherLicense
 license-files:       LICENSE,PATENTS
 author:              Facebook, Inc.
@@ -31,6 +31,7 @@ library
                      , Duckling.Engine
                      , Duckling.Engine.Regex
                      , Duckling.Locale
+                     , Duckling.Region
                      , Duckling.Resolve
                      , Duckling.Types
                      , Duckling.Types.Document
@@ -42,6 +43,7 @@ library
                      , Duckling.Rules.Common
                      , Duckling.Rules.AR
                      , Duckling.Rules.BG
+                     , Duckling.Rules.BN
                      , Duckling.Rules.CS
                      , Duckling.Rules.DA
                      , Duckling.Rules.DE
@@ -49,6 +51,7 @@ library
                      , Duckling.Rules.EN
                      , Duckling.Rules.ES
                      , Duckling.Rules.ET
+                     , Duckling.Rules.FI
                      , Duckling.Rules.FR
                      , Duckling.Rules.GA
                      , Duckling.Rules.HE
@@ -69,6 +72,7 @@ library
                      , Duckling.Rules.RO
                      , Duckling.Rules.RU
                      , Duckling.Rules.SV
+                     , Duckling.Rules.TA
                      , Duckling.Rules.TR
                      , Duckling.Rules.UK
                      , Duckling.Rules.VI
@@ -82,6 +86,7 @@ library
                      , Duckling.Ranking.Classifiers
                      , Duckling.Ranking.Classifiers.AR_XX
                      , Duckling.Ranking.Classifiers.BG_XX
+                     , Duckling.Ranking.Classifiers.BN_XX
                      , Duckling.Ranking.Classifiers.CS_XX
                      , Duckling.Ranking.Classifiers.DA_XX
                      , Duckling.Ranking.Classifiers.DE_XX
@@ -92,6 +97,7 @@ library
                      , Duckling.Ranking.Classifiers.EN_XX
                      , Duckling.Ranking.Classifiers.ES_XX
                      , Duckling.Ranking.Classifiers.ET_XX
+                     , Duckling.Ranking.Classifiers.FI_XX
                      , Duckling.Ranking.Classifiers.FR_XX
                      , Duckling.Ranking.Classifiers.GA_XX
                      , Duckling.Ranking.Classifiers.HE_XX
@@ -106,12 +112,15 @@ library
                      , Duckling.Ranking.Classifiers.MY_XX
                      , Duckling.Ranking.Classifiers.NB_XX
                      , Duckling.Ranking.Classifiers.NE_XX
+                     , Duckling.Ranking.Classifiers.NL_BE
+                     , Duckling.Ranking.Classifiers.NL_NL
                      , Duckling.Ranking.Classifiers.NL_XX
                      , Duckling.Ranking.Classifiers.PL_XX
                      , Duckling.Ranking.Classifiers.PT_XX
                      , Duckling.Ranking.Classifiers.RO_XX
                      , Duckling.Ranking.Classifiers.RU_XX
                      , Duckling.Ranking.Classifiers.SV_XX
+                     , Duckling.Ranking.Classifiers.TA_XX
                      , Duckling.Ranking.Classifiers.TR_XX
                      , Duckling.Ranking.Classifiers.UK_XX
                      , Duckling.Ranking.Classifiers.VI_XX
@@ -128,6 +137,7 @@ library
                      , Duckling.Dimensions.Types
                      , Duckling.Dimensions.AR
                      , Duckling.Dimensions.BG
+                     , Duckling.Dimensions.BN
                      , Duckling.Dimensions.CS
                      , Duckling.Dimensions.DA
                      , Duckling.Dimensions.DE
@@ -135,6 +145,7 @@ library
                      , Duckling.Dimensions.EN
                      , Duckling.Dimensions.ES
                      , Duckling.Dimensions.ET
+                     , Duckling.Dimensions.FI
                      , Duckling.Dimensions.FR
                      , Duckling.Dimensions.GA
                      , Duckling.Dimensions.HE
@@ -155,6 +166,7 @@ library
                      , Duckling.Dimensions.RO
                      , Duckling.Dimensions.RU
                      , Duckling.Dimensions.SV
+                     , Duckling.Dimensions.TA
                      , Duckling.Dimensions.TR
                      , Duckling.Dimensions.UK
                      , Duckling.Dimensions.VI
@@ -163,8 +175,32 @@ library
                      -- AmountOfMoney
                      , Duckling.AmountOfMoney.AR.Corpus
                      , Duckling.AmountOfMoney.AR.Rules
+                     , Duckling.AmountOfMoney.EN.AU.Corpus
+                     , Duckling.AmountOfMoney.EN.AU.Rules
+                     , Duckling.AmountOfMoney.EN.BZ.Corpus
+                     , Duckling.AmountOfMoney.EN.BZ.Rules
+                     , Duckling.AmountOfMoney.EN.CA.Corpus
+                     , Duckling.AmountOfMoney.EN.CA.Rules
                      , Duckling.AmountOfMoney.EN.Corpus
+                     , Duckling.AmountOfMoney.EN.GB.Corpus
+                     , Duckling.AmountOfMoney.EN.GB.Rules
+                     , Duckling.AmountOfMoney.EN.IE.Corpus
+                     , Duckling.AmountOfMoney.EN.IE.Rules
+                     , Duckling.AmountOfMoney.EN.IN.Corpus
+                     , Duckling.AmountOfMoney.EN.IN.Rules
+                     , Duckling.AmountOfMoney.EN.JM.Corpus
+                     , Duckling.AmountOfMoney.EN.JM.Rules
+                     , Duckling.AmountOfMoney.EN.NZ.Corpus
+                     , Duckling.AmountOfMoney.EN.NZ.Rules
+                     , Duckling.AmountOfMoney.EN.PH.Corpus
+                     , Duckling.AmountOfMoney.EN.PH.Rules
                      , Duckling.AmountOfMoney.EN.Rules
+                     , Duckling.AmountOfMoney.EN.TT.Corpus
+                     , Duckling.AmountOfMoney.EN.TT.Rules
+                     , Duckling.AmountOfMoney.EN.US.Corpus
+                     , Duckling.AmountOfMoney.EN.US.Rules
+                     , Duckling.AmountOfMoney.EN.ZA.Corpus
+                     , Duckling.AmountOfMoney.EN.ZA.Rules
                      , Duckling.AmountOfMoney.BG.Corpus
                      , Duckling.AmountOfMoney.BG.Rules
                      , Duckling.AmountOfMoney.ES.Corpus
@@ -191,6 +227,10 @@ library
                      , Duckling.AmountOfMoney.SV.Rules
                      , Duckling.AmountOfMoney.VI.Corpus
                      , Duckling.AmountOfMoney.VI.Rules
+                     , Duckling.AmountOfMoney.NL.Corpus
+                     , Duckling.AmountOfMoney.NL.Rules
+                     , Duckling.AmountOfMoney.ZH.Corpus
+                     , Duckling.AmountOfMoney.ZH.Rules
                      , Duckling.AmountOfMoney.Helpers
                      , Duckling.AmountOfMoney.Rules
                      , Duckling.AmountOfMoney.Types
@@ -222,6 +262,10 @@ library
                      , Duckling.Distance.RU.Rules
                      , Duckling.Distance.TR.Corpus
                      , Duckling.Distance.TR.Rules
+                     , Duckling.Distance.SV.Corpus
+                     , Duckling.Distance.SV.Rules
+                     , Duckling.Distance.ZH.Corpus
+                     , Duckling.Distance.ZH.Rules
                      , Duckling.Distance.Helpers
                      , Duckling.Distance.Rules
                      , Duckling.Distance.Types
@@ -229,6 +273,8 @@ library
                      -- Duration
                      , Duckling.Duration.AR.Corpus
                      , Duckling.Duration.AR.Rules
+                     , Duckling.Duration.BG.Corpus
+                     , Duckling.Duration.BG.Rules
                      , Duckling.Duration.DA.Rules
                      , Duckling.Duration.DE.Rules
                      , Duckling.Duration.EL.Corpus
@@ -240,6 +286,8 @@ library
                      , Duckling.Duration.GA.Corpus
                      , Duckling.Duration.GA.Rules
                      , Duckling.Duration.HE.Rules
+                     , Duckling.Duration.HI.Corpus
+                     , Duckling.Duration.HI.Rules
                      , Duckling.Duration.HR.Rules
                      , Duckling.Duration.HU.Corpus
                      , Duckling.Duration.HU.Rules
@@ -283,6 +331,8 @@ library
                      , Duckling.Numeral.AR.Rules
                      , Duckling.Numeral.BG.Corpus
                      , Duckling.Numeral.BG.Rules
+                     , Duckling.Numeral.BN.Corpus
+                     , Duckling.Numeral.BN.Rules
                      , Duckling.Numeral.CS.Corpus
                      , Duckling.Numeral.CS.Rules
                      , Duckling.Numeral.DA.Corpus
@@ -297,6 +347,8 @@ library
                      , Duckling.Numeral.ES.Rules
                      , Duckling.Numeral.ET.Corpus
                      , Duckling.Numeral.ET.Rules
+                     , Duckling.Numeral.FI.Corpus
+                     , Duckling.Numeral.FI.Rules
                      , Duckling.Numeral.FR.Corpus
                      , Duckling.Numeral.FR.Rules
                      , Duckling.Numeral.GA.Corpus
@@ -335,6 +387,8 @@ library
                      , Duckling.Numeral.RU.Rules
                      , Duckling.Numeral.SV.Corpus
                      , Duckling.Numeral.SV.Rules
+                     , Duckling.Numeral.TA.Corpus
+                     , Duckling.Numeral.TA.Rules
                      , Duckling.Numeral.TR.Corpus
                      , Duckling.Numeral.TR.Rules
                      , Duckling.Numeral.UK.Corpus
@@ -352,6 +406,8 @@ library
                      -- Ordinal
                      , Duckling.Ordinal.AR.Corpus
                      , Duckling.Ordinal.AR.Rules
+                     , Duckling.Ordinal.BG.Corpus
+                     , Duckling.Ordinal.BG.Rules
                      , Duckling.Ordinal.DA.Corpus
                      , Duckling.Ordinal.DA.Rules
                      , Duckling.Ordinal.DE.Corpus
@@ -398,6 +454,8 @@ library
                      , Duckling.Ordinal.RU.Rules
                      , Duckling.Ordinal.SV.Corpus
                      , Duckling.Ordinal.SV.Rules
+                     , Duckling.Ordinal.TA.Corpus
+                     , Duckling.Ordinal.TA.Rules
                      , Duckling.Ordinal.TR.Corpus
                      , Duckling.Ordinal.TR.Rules
                      , Duckling.Ordinal.UK.Corpus
@@ -433,6 +491,8 @@ library
                      , Duckling.Quantity.RO.Rules
                      , Duckling.Quantity.RU.Corpus
                      , Duckling.Quantity.RU.Rules
+                     , Duckling.Quantity.ZH.Corpus
+                     , Duckling.Quantity.ZH.Rules
                      , Duckling.Quantity.Helpers
                      , Duckling.Quantity.Types
 
@@ -450,6 +510,8 @@ library
                      , Duckling.Temperature.FR.Rules
                      , Duckling.Temperature.GA.Corpus
                      , Duckling.Temperature.GA.Rules
+                     , Duckling.Temperature.HI.Corpus
+                     , Duckling.Temperature.HI.Rules
                      , Duckling.Temperature.HR.Corpus
                      , Duckling.Temperature.HR.Rules
                      , Duckling.Temperature.IT.Corpus
@@ -525,6 +587,9 @@ library
                      , Duckling.Time.NB.Rules
                      , Duckling.Time.NL.Corpus
                      , Duckling.Time.NL.Rules
+                     , Duckling.Time.NL.BE.Corpus
+                     , Duckling.Time.NL.BE.Rules
+                     , Duckling.Time.NL.NL.Rules
                      , Duckling.Time.PL.Corpus
                      , Duckling.Time.PL.Rules
                      , Duckling.Time.PT.Corpus
@@ -554,14 +619,17 @@ library
 
                      -- TimeGrain
                      , Duckling.TimeGrain.AR.Rules
+                     , Duckling.TimeGrain.BG.Rules
                      , Duckling.TimeGrain.DA.Rules
                      , Duckling.TimeGrain.DE.Rules
                      , Duckling.TimeGrain.EN.Rules
                      , Duckling.TimeGrain.EL.Rules
                      , Duckling.TimeGrain.ES.Rules
+                     , Duckling.TimeGrain.FI.Rules
                      , Duckling.TimeGrain.FR.Rules
                      , Duckling.TimeGrain.GA.Rules
                      , Duckling.TimeGrain.HE.Rules
+                     , Duckling.TimeGrain.HI.Rules
                      , Duckling.TimeGrain.HR.Rules
                      , Duckling.TimeGrain.HU.Rules
                      , Duckling.TimeGrain.IT.Rules
@@ -673,6 +741,8 @@ test-suite duckling-test
                      , Duckling.AmountOfMoney.RU.Tests
                      , Duckling.AmountOfMoney.SV.Tests
                      , Duckling.AmountOfMoney.VI.Tests
+                     , Duckling.AmountOfMoney.NL.Tests
+                     , Duckling.AmountOfMoney.ZH.Tests
                      , Duckling.AmountOfMoney.Tests
 
                      -- Distance
@@ -689,15 +759,19 @@ test-suite duckling-test
                      , Duckling.Distance.RO.Tests
                      , Duckling.Distance.RU.Tests
                      , Duckling.Distance.TR.Tests
+                     , Duckling.Distance.SV.Tests
+                     , Duckling.Distance.ZH.Tests
                      , Duckling.Distance.Tests
 
                      -- Duration
                      , Duckling.Duration.AR.Tests
+                     , Duckling.Duration.BG.Tests
                      , Duckling.Duration.EL.Tests
                      , Duckling.Duration.EN.Tests
                      , Duckling.Duration.FR.Tests
                      , Duckling.Duration.GA.Tests
                      , Duckling.Duration.HU.Tests
+                     , Duckling.Duration.HI.Tests
                      , Duckling.Duration.JA.Tests
                      , Duckling.Duration.KO.Tests
                      , Duckling.Duration.NB.Tests
@@ -720,6 +794,7 @@ test-suite duckling-test
                      -- Numeral
                      , Duckling.Numeral.AR.Tests
                      , Duckling.Numeral.BG.Tests
+                     , Duckling.Numeral.BN.Tests
                      , Duckling.Numeral.CS.Tests
                      , Duckling.Numeral.DA.Tests
                      , Duckling.Numeral.DE.Tests
@@ -727,6 +802,7 @@ test-suite duckling-test
                      , Duckling.Numeral.EN.Tests
                      , Duckling.Numeral.ES.Tests
                      , Duckling.Numeral.ET.Tests
+                     , Duckling.Numeral.FI.Tests
                      , Duckling.Numeral.FR.Tests
                      , Duckling.Numeral.GA.Tests
                      , Duckling.Numeral.HE.Tests
@@ -747,6 +823,7 @@ test-suite duckling-test
                      , Duckling.Numeral.RO.Tests
                      , Duckling.Numeral.RU.Tests
                      , Duckling.Numeral.SV.Tests
+                     , Duckling.Numeral.TA.Tests
                      , Duckling.Numeral.TR.Tests
                      , Duckling.Numeral.UK.Tests
                      , Duckling.Numeral.VI.Tests
@@ -755,6 +832,7 @@ test-suite duckling-test
 
                      -- Ordinal
                      , Duckling.Ordinal.AR.Tests
+                     , Duckling.Ordinal.BG.Tests
                      , Duckling.Ordinal.DA.Tests
                      , Duckling.Ordinal.DE.Tests
                      , Duckling.Ordinal.EL.Tests
@@ -778,6 +856,7 @@ test-suite duckling-test
                      , Duckling.Ordinal.RO.Tests
                      , Duckling.Ordinal.RU.Tests
                      , Duckling.Ordinal.SV.Tests
+                     , Duckling.Ordinal.TA.Tests
                      , Duckling.Ordinal.TR.Tests
                      , Duckling.Ordinal.UK.Tests
                      , Duckling.Ordinal.VI.Tests
@@ -797,6 +876,7 @@ test-suite duckling-test
                      , Duckling.Quantity.PT.Tests
                      , Duckling.Quantity.RO.Tests
                      , Duckling.Quantity.RU.Tests
+                     , Duckling.Quantity.ZH.Tests
                      , Duckling.Quantity.Tests
 
                      -- Temperature
@@ -805,6 +885,7 @@ test-suite duckling-test
                      , Duckling.Temperature.ES.Tests
                      , Duckling.Temperature.FR.Tests
                      , Duckling.Temperature.GA.Tests
+                     , Duckling.Temperature.HI.Tests
                      , Duckling.Temperature.HR.Tests
                      , Duckling.Temperature.IT.Tests
                      , Duckling.Temperature.JA.Tests
@@ -858,14 +939,14 @@ test-suite duckling-test
                      , Duckling.Volume.TR.Tests
                      , Duckling.Volume.Tests
 
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wincomplete-patterns
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings
 
 executable duckling-regen-exe
   main-is:             RegenMain.hs
   hs-source-dirs:      exe
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wincomplete-patterns
   other-modules:       Duckling.Ranking.Train
                      , Duckling.Ranking.Generate
   build-depends:       duckling
@@ -895,6 +976,22 @@ executable duckling-example-exe
                      , time
                      , timezone-olson        >= 0.1.7 && < 0.2
                      , timezone-series
+                     , unordered-containers
+  default-language:    Haskell2010
+  default-extensions:  OverloadedStrings
+
+executable custom-dimension-example
+  main-is:             CustomDimensionExample.hs
+  hs-source-dirs:      exe
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       duckling
+                     , aeson
+                     , base
+                     , deepseq
+                     , dependent-sum
+                     , hashable
+                     , text
+                     , text-show
                      , unordered-containers
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings
@@ -939,4 +1036,4 @@ executable duckling-expensive
 
 source-repository head
   type:     git
-  location: https://github.com/facebookincubator/duckling
+  location: https://github.com/facebook/duckling

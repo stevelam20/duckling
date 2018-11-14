@@ -57,6 +57,8 @@ Please look into [this directory](https://github.com/facebook/duckling/blob/mast
 | `Url` | "https://api.wit.ai/message?q=hi" | `{"value":"https://api.wit.ai/message?q=hi","domain":"api.wit.ai"}`
 | `Volume` | "4 gallons" | `{"value":4,"type":"value","unit":"gallon"}`
 
+[Custom dimensions](https://github.com/facebook/duckling/blob/master/exe/CustomDimensionExample.hs) are also supported.
+
 ## Extending Duckling
 To regenerate the classifiers and run the test suite:
 ```
@@ -66,10 +68,11 @@ $ stack build :duckling-regen-exe && stack exec duckling-regen-exe && stack test
 It's important to regenerate the classifiers after updating the code and before
 running the test suite.
 
-To extend Duckling's support for a dimension in a given language, typically 2
+To extend Duckling's support for a dimension in a given language, typically 3
 files need to be updated:
-* `Duckling/<dimension>/<language>/Rules.hs`
-* `Duckling/<dimension>/<language>/Corpus.hs`
+* `Duckling/<Dimension>/<Lang>/Rules.hs`
+* `Duckling/<Dimension>/<Lang>/Corpus.hs`
+* `Duckling/Dimensions/<Lang>.hs` (if not already present in `Duckling/Dimensions/Common.hs`)
 
 To add a new language:
 * Make sure that the language code used follows the [ISO-639-1 standard](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
@@ -103,7 +106,7 @@ in|within|after <duration> (in two minutes)
 -- -- -- regex (two)
 -- -- minute (grain) (minutes)
 -- -- -- regex (minutes)
-[Entity {dim = "time", body = "in two minutes", value = "{\"values\":[{\"value\":\"2013-02-12T04:32:00.000-02:00\",\"grain\":\"second\",\"type\":\"value\"}],\"value\":\"2013-02-12T04:32:00.000-02:00\",\"grain\":\"second\",\"type\":\"value\"}", start = 0, end = 14}]
+[Entity {dim = "time", body = "in two minutes", value = RVal Time (TimeValue (SimpleValue (InstantValue {vValue = 2013-02-12 04:32:00 -0200, vGrain = Second})) [SimpleValue (InstantValue {vValue = 2013-02-12 04:32:00 -0200, vGrain = Second})] Nothing), start = 0, end = 14}]
 ```
 
 ## License

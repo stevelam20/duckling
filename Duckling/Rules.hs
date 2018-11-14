@@ -25,6 +25,7 @@ import Duckling.Types
 import qualified Duckling.Rules.AR as ARRules
 import qualified Duckling.Rules.Common as CommonRules
 import qualified Duckling.Rules.BG as BGRules
+import qualified Duckling.Rules.BN as BNRules
 import qualified Duckling.Rules.CS as CSRules
 import qualified Duckling.Rules.DA as DARules
 import qualified Duckling.Rules.DE as DERules
@@ -32,6 +33,7 @@ import qualified Duckling.Rules.EL as ELRules
 import qualified Duckling.Rules.EN as ENRules
 import qualified Duckling.Rules.ES as ESRules
 import qualified Duckling.Rules.ET as ETRules
+import qualified Duckling.Rules.FI as FIRules
 import qualified Duckling.Rules.FR as FRRules
 import qualified Duckling.Rules.GA as GARules
 import qualified Duckling.Rules.HE as HERules
@@ -52,6 +54,7 @@ import qualified Duckling.Rules.PT as PTRules
 import qualified Duckling.Rules.RO as RORules
 import qualified Duckling.Rules.RU as RURules
 import qualified Duckling.Rules.SV as SVRules
+import qualified Duckling.Rules.TA as TARules
 import qualified Duckling.Rules.TR as TRRules
 import qualified Duckling.Rules.UK as UKRules
 import qualified Duckling.Rules.VI as VIRules
@@ -80,6 +83,7 @@ rulesFor' (Locale lang Nothing) dim =
 defaultRules :: Lang -> Some Dimension -> [Rule]
 defaultRules AR = ARRules.defaultRules
 defaultRules BG = BGRules.defaultRules
+defaultRules BN = BNRules.defaultRules
 defaultRules CS = CSRules.defaultRules
 defaultRules DA = DARules.defaultRules
 defaultRules DE = DERules.defaultRules
@@ -87,6 +91,7 @@ defaultRules EL = ELRules.defaultRules
 defaultRules EN = ENRules.defaultRules
 defaultRules ES = ESRules.defaultRules
 defaultRules ET = ETRules.defaultRules
+defaultRules FI = FIRules.defaultRules
 defaultRules FR = FRRules.defaultRules
 defaultRules GA = GARules.defaultRules
 defaultRules HE = HERules.defaultRules
@@ -107,6 +112,7 @@ defaultRules PT = PTRules.defaultRules
 defaultRules RO = RORules.defaultRules
 defaultRules RU = RURules.defaultRules
 defaultRules SV = SVRules.defaultRules
+defaultRules TA = TARules.defaultRules
 defaultRules TR = TRRules.defaultRules
 defaultRules UK = UKRules.defaultRules
 defaultRules VI = VIRules.defaultRules
@@ -115,6 +121,7 @@ defaultRules ZH = ZHRules.defaultRules
 localeRules :: Lang -> Region -> Some Dimension -> [Rule]
 localeRules AR = ARRules.localeRules
 localeRules BG = BGRules.localeRules
+localeRules BN = BNRules.localeRules
 localeRules CS = CSRules.localeRules
 localeRules DA = DARules.localeRules
 localeRules DE = DERules.localeRules
@@ -122,6 +129,7 @@ localeRules EL = ELRules.localeRules
 localeRules EN = ENRules.localeRules
 localeRules ES = ESRules.localeRules
 localeRules ET = ETRules.localeRules
+localeRules FI = FIRules.localeRules
 localeRules FR = FRRules.localeRules
 localeRules GA = GARules.localeRules
 localeRules HE = HERules.localeRules
@@ -142,6 +150,7 @@ localeRules PT = PTRules.localeRules
 localeRules RO = RORules.localeRules
 localeRules RU = RURules.localeRules
 localeRules SV = SVRules.localeRules
+localeRules TA = TARules.localeRules
 localeRules TR = TRRules.localeRules
 localeRules UK = UKRules.localeRules
 localeRules VI = VIRules.localeRules
@@ -150,6 +159,7 @@ localeRules ZH = ZHRules.localeRules
 langRules :: Lang -> Some Dimension -> [Rule]
 langRules AR = ARRules.langRules
 langRules BG = BGRules.langRules
+langRules BN = BNRules.langRules
 langRules CS = CSRules.langRules
 langRules DA = DARules.langRules
 langRules DE = DERules.langRules
@@ -157,6 +167,7 @@ langRules EL = ELRules.langRules
 langRules EN = ENRules.langRules
 langRules ES = ESRules.langRules
 langRules ET = ETRules.langRules
+langRules FI = FIRules.langRules
 langRules FR = FRRules.langRules
 langRules GA = GARules.langRules
 langRules HE = HERules.langRules
@@ -177,6 +188,7 @@ langRules PT = PTRules.langRules
 langRules RO = RORules.langRules
 langRules RU = RURules.langRules
 langRules SV = SVRules.langRules
+langRules TA = TARules.langRules
 langRules TR = TRRules.langRules
 langRules UK = UKRules.langRules
 langRules VI = VIRules.langRules

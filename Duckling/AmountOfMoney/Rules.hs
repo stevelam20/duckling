@@ -38,8 +38,12 @@ currencies = HashMap.fromList
   , ("bgn", BGN)
   , ("brl", BRL)
   , ("byn", BYN)
+  , ("cad", CAD)
   , ("¢", Cent)
   , ("c", Cent)
+  , ("cny", CNY)
+  , ("rmb", CNY)
+  , ("yuan", CNY)
   , ("$", Dollar)
   , ("dinar", Dinar)
   , ("dinars", Dinar)
@@ -65,6 +69,7 @@ currencies = HashMap.fromList
   , ("rs.", INR)
   , ("rupee", INR)
   , ("rupees", INR)
+  , ("jmd", JMD)
   , ("jod", JOD)
   , ("¥", JPY)
   , ("jpy", JPY)
@@ -76,6 +81,7 @@ currencies = HashMap.fromList
   , ("myr", MYR)
   , ("rm", MYR)
   , ("nok", NOK)
+  , ("nzd", NZD)
   , ("£", Pound)
   , ("pt", PTS)
   , ("pta", PTS)
@@ -94,6 +100,7 @@ currencies = HashMap.fromList
   , ("sgd", SGD)
   , ("shekel", ILS)
   , ("shekels", ILS)
+  , ("ttd", TTD)
   , ("usd", USD)
   , ("us$", USD)
   , ("vnd", VND)
@@ -103,7 +110,7 @@ ruleCurrencies :: Rule
 ruleCurrencies = Rule
   { name = "currencies"
   , pattern =
-    [ regex "(aed|aud|bgn|brl|byn|¢|c|\\$|dinars?|dollars?|egp|(e|€)uro?s?|€|gbp|hrk|idr|ils|inr|iqd|jod|¥|jpy|krw|kwd|lbp|mad|myr|rm|nok|£|pta?s?|qar|₽|rs\\.?|riy?als?|ron|rub|rupees?|sar|sek|sgb|shekels?|us(d|\\$)|vnd|yen)"
+    [ regex "(aed|aud|bgn|brl|byn|¢|c|cad|cny|\\$|dinars?|dollars?|egp|(e|€)uro?s?|€|gbp|hrk|idr|ils|inr|iqd|jmd|jod|¥|jpy|krw|kwd|lbp|mad|myr|rm|nok|nzd|£|pta?s?|qar|₽|rs\\.?|riy?als?|ron|rub|rupees?|sar|sek|sgb|shekels?|ttd|us(d|\\$)|vnd|yen|yuan)"
     ]
   , prod = \tokens -> case tokens of
       (Token RegexMatch (GroupMatch (match:_)):_) -> do
@@ -117,7 +124,7 @@ ruleAmountUnit = Rule
   { name = "<amount> <unit>"
   , pattern =
     [ Predicate isPositive
-    , financeWith TAmountOfMoney.value isNothing
+    , Predicate isCurrencyOnly
     ]
   , prod = \tokens -> case tokens of
       (Token Numeral NumeralData{TNumeral.value = v}:
@@ -126,23 +133,8 @@ ruleAmountUnit = Rule
       _ -> Nothing
   }
 
-ruleUnitAmount :: Rule
-ruleUnitAmount = Rule
-  { name = "<unit> <amount>"
-  , pattern =
-    [ financeWith TAmountOfMoney.value isNothing
-    , Predicate isPositive
-    ]
-  , prod = \tokens -> case tokens of
-      (Token AmountOfMoney AmountOfMoneyData{TAmountOfMoney.currency = c}:
-       Token Numeral NumeralData{TNumeral.value = v}:
-       _) -> Just . Token AmountOfMoney . withValue v $ currencyOnly c
-      _ -> Nothing
-  }
-
 rules :: [Rule]
 rules =
   [ ruleAmountUnit
   , ruleCurrencies
-  , ruleUnitAmount
   ]

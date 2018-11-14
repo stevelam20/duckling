@@ -148,10 +148,12 @@ ruleCompositeTens = Rule
   { name = "integer 21..99"
   , pattern =
     [ oneOf [20,30..90]
+    , regex "[\\s\\-]+"
     , numberBetween 1 10
     ]
   , prod = \tokens -> case tokens of
       (Token Numeral NumeralData{TNumeral.value = tens}:
+       _:
        Token Numeral NumeralData{TNumeral.value = units}:
        _) -> double $ tens + units
       _ -> Nothing
@@ -205,7 +207,7 @@ ruleDotSpelledOut = Rule
   , pattern =
     [ dimension Numeral
     , regex "point|dot"
-    , numberWith TNumeral.grain isNothing
+    , Predicate $ not . hasGrain
     ]
   , prod = \tokens -> case tokens of
       (Token Numeral nd1:_:Token Numeral nd2:_) ->
@@ -218,7 +220,7 @@ ruleLeadingDotSpelledOut = Rule
   { name = "point 77"
   , pattern =
     [ regex "point|dot"
-    , numberWith TNumeral.grain isNothing
+    , Predicate $ not . hasGrain
     ]
   , prod = \tokens -> case tokens of
       (_:Token Numeral nd:_) -> double . decimalsToDouble $ TNumeral.value nd
@@ -282,7 +284,7 @@ ruleSum :: Rule
 ruleSum = Rule
   { name = "intersect 2 numbers"
   , pattern =
-    [ numberWith (fromMaybe 0 . TNumeral.grain) (>1)
+    [ Predicate $ and . sequence [hasGrain, isPositive]
     , Predicate $ and . sequence [not . isMultipliable, isPositive]
     ]
   , prod = \tokens -> case tokens of
@@ -296,7 +298,7 @@ ruleSumAnd :: Rule
 ruleSumAnd = Rule
   { name = "intersect 2 numbers (with and)"
   , pattern =
-    [ numberWith (fromMaybe 0 . TNumeral.grain) (>1)
+    [ Predicate $ and . sequence [hasGrain, isPositive]
     , regex "and"
     , Predicate $ and . sequence [not . isMultipliable, isPositive]
     ]

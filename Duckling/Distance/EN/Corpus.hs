@@ -9,16 +9,17 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Duckling.Distance.EN.Corpus
-  ( corpus ) where
+  ( corpus
+  ) where
 
-import Prelude
 import Data.String
+import Prelude
 
 import Duckling.Distance.Types
 import Duckling.Testing.Types
 
 corpus :: Corpus
-corpus = (testContext, allExamples)
+corpus = (testContext, testOptions, allExamples)
 
 allExamples :: [Example]
 allExamples = concat
@@ -67,5 +68,10 @@ allExamples = concat
              , "at least 5''"
              , "over 5\""
              , "above 5 in"
+             ]
+  , examples (between Millimetre (5, 6))
+             [ "between 5 and six millimeters"
+             , "between 5 and six millimetres"
+             , "5-6 mm"
              ]
   ]
