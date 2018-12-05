@@ -1,0 +1,7 @@
+duckling:
+    restart: always
+    image: "registry-registry.e4ff.pro-eu-west-1.openshiftapps.com/duckling"
+    expose:
+    - "8000"
+    volumes:
+    - ./.stack:/.stack
